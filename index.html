@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp ko Link Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>WhatsApp ko Link Generator</h1>
+        <textarea id="numbers" placeholder="Enter numbers separated by commas or new lines"></textarea>
+        <button onclick="generateLinks()">Generate Links</button>
+
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function generateLinks() {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = '';
+            const numbers = document.getElementById('numbers').value.split(/[\n,]+/);
+            numbers.forEach(number => {
+                number = number.trim();
+                if (number) {
+                    const link = `https://wa.me/${number}`;
+                    const a = document.createElement('a');
+                    a.href = link;
+                    a.target = '_blank';
+                    a.textContent = link;
+                    resultDiv.appendChild(a);
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>
